@@ -1,6 +1,8 @@
 @extends('partials.master') @section('main') <div class="container">
   <div class="col-md-12 mt-3">
-    <div class="card">
+    <button id="removeUserButton" class="btn btn-danger btn-sm">Kullanıcıyı Sil</button>
+    <button id="sendSmsButton" class="btn btn-info btn-sm">Kullanıcıya Mesaj Gönder</button>
+    <div class="card mt-3">
       <div class="card-header d-flex justify-content-between">
         <h5 class="card-title">Kullanıcı Detay Bilgileri</h5>
       </div>
@@ -72,13 +74,13 @@
           <div class="col-md-12">
             <div class="mb-3">
               <label for="password" class="form-label">Parola</label>
-              <input type="text" class="form-control" id="password">
+              <input type="password" class="form-control" id="password">
             </div>
           </div>
           <div class="col-md-12">
             <div class="mb-3">
               <label for="password" class="form-label">Parola Tekrarı</label>
-              <input type="text" class="form-control" id="repeatPassword">
+              <input type="password" class="form-control" id="repeatPassword">
             </div>
           </div>
           <div class="col-md-12">
@@ -194,6 +196,50 @@
         }
       });
     });
-    // 
+    // Kullanıcıyı Sil
+    $('#removeUserButton').click(function(e) {
+      e.preventDefault();
+      let removeId = $('#id').val();
+      Swal.fire({
+        icon: "warning",
+        title: "Bu Kaydı Silmek İstediğinize Emin Misiniz?",
+        text: "Bu işlem geri alınamaz ve veriler kalıcı olarak silinecektir.",
+        showCancelButton: true,
+        confirmButtonText: "Evet,Sil!",
+        cancelButtonText: "İptal!"
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $.ajax({
+            type: "POST",
+            url: "{{route('users.remove')}}",
+            data: {
+              removeId: removeId,
+              _token: "{{csrf_token()}}",
+            },
+            success: function(response) {
+              if (response.success) {
+                Swal.fire({
+                  icon: "success",
+                  title: response.message,
+                  showDenyButton: false,
+                  showCancelButton: false,
+                  confirmButtonText: "OK",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.href = '{{ route("users.index") }}';
+                  }
+                });
+              } else {
+                Swal.fire({
+                  icon: "error",
+                  title: "Oops...",
+                  text: response.message,
+                });
+              }
+            }
+          });
+        }
+      });
+    });
   })
 </script> @endsection

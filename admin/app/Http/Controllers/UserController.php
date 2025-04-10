@@ -134,4 +134,16 @@ class UserController extends Controller
             ]);
         }
     }
+
+    // Kullanıcıyı Veritabanından Sil 
+    public function remove(Request $request)
+    {
+        try {
+           DB::table('users')->where('id','=',$request->input('removeId'))->delete();
+           return response()->json(['success'=>true,'message'=>'Kullanıcı Başarıyla Silindi !']);
+        } catch (Exception $e) {
+           return response()->json(['success'=>false,'message'=>'Kullanıcı Silinemedi Bilinmeyen Bir Hata !']);
+
+        }
+    }
 }
