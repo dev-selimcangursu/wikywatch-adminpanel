@@ -14,5 +14,8 @@ Route::prefix('/users')->group(function(){
 	Route::get('/fetch',[UserController::class,'fetch'])->name('users.fetch');
 	Route::get('/create',[UserController::class,'create'])->name('users.create');
 	Route::post('/store',[UserController::class,'store'])->name('users.store');
+	Route::get('/edit/{id}',[UserController::class,'edit'])->name('users.edit');
+	Route::post('/update',[UserController::class,'update'])->name('users.update');
 });
+
 

@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Departments;
+use App\Models\Role;
 use Yajra\DataTables\Facades\DataTables;
-
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -26,7 +28,9 @@ class UserController extends Controller
     // Yeni Kullanıcı Ekle Sayfası
     public function create()
     {
-        return view('users.create');
+        $departments = Departments::all();
+        $roles       = Role::all();
+        return view('users.create', compact('departments','roles'));
     }
 
     // Yeni Kullanıcı Ekleme Formu
@@ -60,7 +64,42 @@ class UserController extends Controller
 
           return response()->json(['success'=>false , 'message'=>$e->getMessage()]);
       }
+    }
+
+    // Kullanıcı Detay Sayfası 
+    public function edit(Request $request ,$id)
+    {
+        $user        = User::find($id);
+        $departments = Departments::all();
+        $roles       = Role::all();
+        return view('users.edit',compact('user','departments','roles'));
+    }
+
+    // Kullanıcı Bilgilerini Güncelle 
+    public function update(Request $request)
+    {
+        try {
+            $userId        = $request->input('userId');
+            $name          = $request->input('name');
+            $email         = $request->input('email');
+            $phone         = $request->input('phone');
+            $department_id = $request->input('department_id');
+            $role_id       = $request->input('role_id');
+            $status_id     = $request->input('status_id');
 
 
+            DB::table('users')->where('id','=',$userId)->update([
+            'name'          => $name,
+            'email'         => $email,
+            'phone'         => $phone,
+            'department_id' => $department_id,
+            'role_id'       => $role_id,
+            'status_id'     => $status_id]);
+
+            return response()->json(['success'=>true,'message'=>'Kullanıcı Bilgileri Başarıyla Güncellendi']);
+
+        } catch (Exception $e) {
+             return response()->json(['success'=>false,'message'=>$e->getMessage()]);
+        }
     }
 }

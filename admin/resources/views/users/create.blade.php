@@ -29,9 +29,9 @@
               <label for="department_id" class="form-label">Departman Bilgisi</label>
               <select class="form-select" id="department_id">
                 <option selected>Seçiniz...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                 @foreach($departments as $department)
+                  <option value="{{$department->id}}">{{$department->name}}</option>
+                 @endforeach
               </select>
             </div>
           </div>
@@ -40,9 +40,9 @@
               <label for="" class="form-label">Rol Bilgisi</label>
               <select class="form-select" id="role_id">
                 <option selected>Seçiniz...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                 @foreach($roles as $role)
+                  <option value="{{$role->id}}">{{$role->name}}</option>
+                 @endforeach
               </select>
             </div>
           </div>
@@ -51,9 +51,8 @@
               <label for="status_id" class="form-label">Durum</label>
               <select class="form-select" id="status_id">
                 <option selected>Seçiniz...</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <option value="1">Aktif</option>
+                <option value="2">Pasif</option>
               </select>
             </div>
           </div>
@@ -99,7 +98,7 @@
           if (response.success) {
             console.log(response.message);
             Swal.fire({
-              icon:"success"
+              icon:"success",
               title: response.message,
               showDenyButton: false,
               showCancelButton: false,

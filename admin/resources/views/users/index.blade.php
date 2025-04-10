@@ -20,7 +20,7 @@
                 <th>Pozisyon</th>
                 <th>Durum</th>
                 <th>İşe Başlama Tarihi</th>
-                <th>İşlem</th>
+                <th></th>
               </tr>
             </thead>
             <tbody></tbody>
@@ -48,7 +48,10 @@ $(document).ready(function(){
       { data: "role_id", name: "role_id" },
       { data: "status_id", name: "status_id" },
       { data: "created_at", name: "created_at" },
-      { data: "action", name: "action", orderable: false, searchable: false }
+      { data: "action", name: "action", render: function(data, type, row) {
+        return `<a href="" class="btn btn-sm btn-primary">İncele</a>`;
+        }
+      }
     ]
   });
 });
