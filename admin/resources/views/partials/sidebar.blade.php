@@ -145,6 +145,32 @@
 								</ul>
 							</div>
 						</li>
+							<li class="nav-item">
+							<a data-bs-toggle="collapse" href="#settings">
+								<i class="fas fa-map-marker-alt"></i>
+								<p>Ayarlar</p>
+								<span class="caret"></span>
+							</a>
+							<div class="collapse" id="settings">
+								<ul class="nav nav-collapse">
+									<li>
+										<a href="maps/googlemaps.html">
+											<span class="sub-item">Tüm Kullanıcılar</span>
+										</a>
+									</li>
+									<li>
+										<a href="maps/jsvectormap.html">
+											<span class="sub-item">Yeni Kullanıcı Oluştur</span>
+										</a>
+									</li>
+										<li>
+										<a href="maps/jsvectormap.html">
+											<span class="sub-item">Yeni Bildiri Oluştur</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
 					</ul>
 				</div>
 			</div>
