@@ -154,12 +154,12 @@
 							<div class="collapse" id="settings">
 								<ul class="nav nav-collapse">
 									<li>
-										<a href="maps/googlemaps.html">
+										<a href="{{route('users.index')}}">
 											<span class="sub-item">Tüm Kullanıcılar</span>
 										</a>
 									</li>
 									<li>
-										<a href="maps/jsvectormap.html">
+										<a href="{{route('users.create')}}">
 											<span class="sub-item">Yeni Kullanıcı Oluştur</span>
 										</a>
 									</li>

@@ -3,9 +3,8 @@
 <div class="container">
   <div class="col-md-12 mt-3">
     <div class="card">
-      <div class="card-header d-flex justify-content-between">
+      <div class="card-header">
         <h5 class="card-title">Tüm Kullanıcılar</h5>
-        	<a href="{{route('users.create')}}">Yeni Kullanıcı Ekle</button>
       </div>
       <div class="card-body">
         <div class="table-responsive">
