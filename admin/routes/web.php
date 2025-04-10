@@ -16,6 +16,8 @@ Route::prefix('/users')->group(function(){
 	Route::post('/store',[UserController::class,'store'])->name('users.store');
 	Route::get('/edit/{id}',[UserController::class,'edit'])->name('users.edit');
 	Route::post('/update',[UserController::class,'update'])->name('users.update');
+	Route::post('/update-password', [UserController::class, 'updatePassword'])->name('users.updatePassword');
+
 });
 
 

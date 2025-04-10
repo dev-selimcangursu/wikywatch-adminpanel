@@ -82,7 +82,7 @@
             </div>
           </div>
           <div class="col-md-12">
-            <button class="btn btn-success btn-sm float-end">Kullanıcı Parolasını Güncelle</button>
+            <button id="userPasswordUpdateButton" class="btn btn-success btn-sm float-end">Kullanıcı Parolasını Güncelle</button>
           </div>
         </form>
       </div>
@@ -139,5 +139,61 @@
         }
       })
     })
+    // Kullanıcı Parola Güncelle
+    $('#userPasswordUpdateButton').click(function(e) {
+      e.preventDefault();
+      let password = $('#password').val();
+      let repeatPassword = $('#repeatPassword').val();
+      let user_id = $('#id').val();
+      if (password !== repeatPassword) {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Şifreler eşleşmiyor!",
+        });
+        return;
+      }
+      $.ajax({
+        type: "POST",
+        url: "{{ route('users.updatePassword') }}",
+        data: {
+          user_id: user_id,
+          password: password,
+          _token: "{{ csrf_token() }}",
+        },
+        success: function(response) {
+          if (response.success) {
+            Swal.fire({
+              icon: "success",
+              title: response.message,
+              showDenyButton: false,
+              showCancelButton: false,
+              confirmButtonText: "Tamam",
+            }).then((result) => {
+              if (result.isConfirmed) {
+                window.location.reload();
+              }
+            });
+          } else {
+            Swal.fire({
+              icon: "error",
+              title: "Oops...",
+              text: response.message,
+            });
+          }
+        },
+        error: function(xhr, status, error) {
+          console.log(xhr)
+          console.log(status)
+          console.log(error)
+          Swal.fire({
+            icon: "error",
+            title: "Hata",
+            text: "Bir hata oluştu, lütfen tekrar deneyin.",
+          });
+        }
+      });
+    });
+    // 
   })
 </script> @endsection
