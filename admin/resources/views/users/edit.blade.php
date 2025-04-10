@@ -1,5 +1,6 @@
 @extends('partials.master') @section('main') <div class="container">
   <div class="col-md-12 mt-3">
+    <a href="{{route('users.index')}}" class="btn btn-dark btn-sm">Geri Dön</a>
     <button id="removeUserButton" class="btn btn-danger btn-sm">Kullanıcıyı Sil</button>
     <button id="sendSmsButton" class="btn btn-info btn-sm">Kullanıcıya Mesaj Gönder</button>
     <div class="card mt-3">

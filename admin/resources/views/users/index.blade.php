@@ -49,7 +49,7 @@ $(document).ready(function(){
       { data: "status_id", name: "status_id" },
       { data: "created_at", name: "created_at" },
       { data: "action", name: "action", render: function(data, type, row) {
-        return `<a href="" class="btn btn-sm btn-primary">İncele</a>`;
+        return `<a href="users/edit/${row.id}" class="btn btn-sm btn-primary">İncele</a>`;
         }
       }
     ]
