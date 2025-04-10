@@ -6,6 +6,8 @@
 	<meta name="author" content="Selimcan Gürsu | Full Stack Web Developer">
 	<meta content='width=device-width, initial-scale=1.0, shrink-to-fit=no' name='viewport' />
 	<script src="{{asset('assets/js/plugin/webfont/webfont.min.js')}}"></script>
+	 <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+	 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 	<script>
 		WebFont.load({
 			google: {"families":["Public Sans:300,400,500,600,700"]},
@@ -31,7 +33,7 @@
 	     @include('partials.footer')
 		</div>
 	</div>
-	<script src="{{asset('assets/js/core/jquery-3.7.1.min.js')}}"></script>
+
 	<script src="{{asset('assets/js/core/popper.min.js')}}"></script>
 	<script src="{{asset('assets/js/core/bootstrap.min.js')}}"></script>
 	<script src="{{asset('assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js')}}"></script>
