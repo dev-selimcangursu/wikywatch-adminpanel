@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\SmsController;
 
 Route::get('/dashboard',[DashboardController::class,'index'])->name('dashboard');
 Route::get('/',[LoginController::class,'index'])->name('login');
@@ -18,6 +19,7 @@ Route::prefix('/users')->group(function(){
 	Route::post('/update',[UserController::class,'update'])->name('users.update');
 	Route::post('/update-password', [UserController::class, 'updatePassword'])->name('users.updatePassword');
 	Route::post('/delete',[UserController::class,'remove'])->name('users.remove');
+	Route::post('/sms/send',[SmsController::class,'smsSend'])->name('sms.send');
 
 });
 

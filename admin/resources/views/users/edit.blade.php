@@ -2,7 +2,7 @@
   <div class="col-md-12 mt-3">
     <a href="{{route('users.index')}}" class="btn btn-dark btn-sm">Geri Dön</a>
     <button id="removeUserButton" class="btn btn-danger btn-sm">Kullanıcıyı Sil</button>
-    <button id="sendSmsButton" class="btn btn-info btn-sm">Kullanıcıya Mesaj Gönder</button>
+    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> Kullanıcıya Mesaj Gönder </button>
     <div class="card mt-3">
       <div class="card-header d-flex justify-content-between">
         <h5 class="card-title">Kullanıcı Detay Bilgileri</h5>
@@ -71,8 +71,7 @@
         <h5 class="card-title">Kullanıcı Parola Değiştir</h5>
       </div>
       <div class="card-body">
-        <form>
-          <div class="col-md-12">
+        <form> @csrf <div class="col-md-12">
             <div class="mb-3">
               <label for="password" class="form-label">Parola</label>
               <input type="password" class="form-control" id="password">
@@ -86,6 +85,32 @@
           </div>
           <div class="col-md-12">
             <button id="userPasswordUpdateButton" class="btn btn-success btn-sm float-end">Kullanıcı Parolasını Güncelle</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">Kullanıcıya Mesaj Gönder</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="phone_number" class="form-label">Telefon Numarası</label>
+            <input type="text" class="form-control" id="phone_number" value="{{$user->phone}}">
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Mesajınız</label>
+            <textarea id="message" class="form-control" rows="3"></textarea>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Kapat</button>
+            <button type="button" id="smsSendButton" class="btn btn-primary">Gönder</button>
           </div>
         </form>
       </div>
@@ -239,6 +264,50 @@
               }
             }
           });
+        }
+      });
+    });
+    // Sms Gönder
+    $('#smsSendButton').click(function(e) {
+      e.preventDefault();
+      let phone_number = $('#phone_number').val();
+      let message = $('#message').val();
+      let smsId = {{$user->id}};
+      $.ajax({
+        type: "POST",
+        url: "{{ route('sms.send') }}",
+        data: {
+          smsId: smsId,
+          phone_number: phone_number,
+          message: message,
+          _token: "{{ csrf_token() }}"
+        },
+        success: function(response) {
+          if (response.success) {
+            console.log(response.message);
+            Swal.fire({
+              icon: "success",
+              title: response.message,
+              showDenyButton: false,
+              showCancelButton: false,
+              confirmButtonText: "Tamam",
+            }).then((result) => {
+               window.location.reload();
+            });
+          } else {
+            console.log(response.message);
+            Swal.fire({
+              position: "top-center",
+              icon: "error",
+              title: response.message,
+              showConfirmButton: true,
+            });
+          }
+        },
+        error: function(xhr, status, error) {
+          console.error("Error: " + error);
+          console.error("Status: " + status);
+          console.error(xhr.responseText);
         }
       });
     });
