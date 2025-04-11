@@ -1,8 +1,9 @@
 @extends('partials.master') @section('main') <div class="container">
   <div class="col-md-12 mt-3">
-    <a href="{{route('users.index')}}" class="btn btn-dark btn-sm">Geri Dön</a>
-    <button id="removeUserButton" class="btn btn-danger btn-sm">Kullanıcıyı Sil</button>
-    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> Kullanıcıya Mesaj Gönder </button>
+    <a href="{{route('users.index')}}" class="btn btn-dark btn-sm"> <i class="bi bi-arrow-counterclockwise"></i> Geri Dön</a>
+    <button id="removeUserButton" class="btn btn-danger btn-sm"><i class="bi bi-trash"></i> Kullanıcıyı Sil</button>
+    <button type="button" class="btn btn-info btn-sm" data-bs-toggle="modal" data-bs-target="#staticBackdrop"> 
+      <i class="bi bi-send"></i> Kullanıcıya Mesaj Gönder </button>
     <div class="card mt-3">
       <div class="card-header d-flex justify-content-between">
         <h5 class="card-title">Kullanıcı Detay Bilgileri</h5>
@@ -61,7 +62,7 @@
             </div>
           </div>
           <div class="col-md-12">
-            <button id="userInfoUpdateButton" class="btn btn-success btn-sm float-end">Kullanıcı Bilgilerini Güncelle</button>
+            <button id="userInfoUpdateButton" class="btn btn-success btn-sm float-end"> <i class="bi bi-floppy"></i> Kullanıcı Bilgilerini Güncelle</button>
           </div>
         </form>
       </div>
@@ -84,7 +85,7 @@
             </div>
           </div>
           <div class="col-md-12">
-            <button id="userPasswordUpdateButton" class="btn btn-success btn-sm float-end">Kullanıcı Parolasını Güncelle</button>
+            <button id="userPasswordUpdateButton" class="btn btn-success btn-sm float-end"><i class="bi bi-floppy"></i> Kullanıcı Parolasını Güncelle</button>
           </div>
         </form>
       </div>

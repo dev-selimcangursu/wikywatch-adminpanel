@@ -25,7 +25,7 @@
 					<ul class="nav nav-secondary">
 						<li class="nav-item active">
 							<a data-bs-toggle="collapse" href="#dashboard" class="collapsed" aria-expanded="false">
-								<i class="fas fa-home"></i>
+								<i class="bi bi-house"></i>
 								<p>Kontrol Paneli</p>
 							</a>
 						</li>
@@ -37,7 +37,7 @@
 						</li>
 						<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#base">
-								<i class="fas fa-layer-group"></i>
+								<i class="bi bi-gear"></i>
 								<p>Teknik Servis</p>
 								<span class="caret"></span>
 							</a>
@@ -73,7 +73,7 @@
 						</li>
 						<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#sidebarLayouts">
-								<i class="fas fa-th-list"></i>
+							<i class="bi bi-journals"></i>
 								<p>Müşteri Yönetimi</p>
 								<span class="caret"></span>
 							</a>
@@ -114,19 +114,19 @@
 						</li>
 						<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#forms">
-								<i class="fas fa-pen-square"></i>
+								<i class="bi bi-list-ol"></i>
 								<p>Siparişler</p>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#tables">
-								<i class="fas fa-table"></i>
+								<i class="bi bi-bar-chart"></i>
 								<p>Raporlar</p>
 							</a>
 						</li>
 						<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#maps">
-								<i class="fas fa-map-marker-alt"></i>
+								<i class="bi bi-award-fill"></i>
 								<p>Ürünler</p>
 								<span class="caret"></span>
 							</a>
@@ -147,7 +147,7 @@
 						</li>
 							<li class="nav-item">
 							<a data-bs-toggle="collapse" href="#settings">
-								<i class="fas fa-map-marker-alt"></i>
+								<i class="bi bi-sliders"></i>
 								<p>Ayarlar</p>
 								<span class="caret"></span>
 							</a>

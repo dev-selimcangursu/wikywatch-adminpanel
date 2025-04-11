@@ -63,7 +63,7 @@
             </div>
           </div>
           <div class="col-md-12">
-            <button id="save" class="float-end btn btn-primary btn-sm">Yeni Kullanıcıyı Ekle</button>
+            <button id="save" class="float-end btn btn-success btn-sm"><i class="bi bi-floppy"></i> Yeni Kullanıcıyı Ekle</button>
           </div>
         </form>
       </div>
