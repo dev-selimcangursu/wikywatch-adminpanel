@@ -41,12 +41,29 @@ $(document).ready(function(){
     columns: [
       { data: "id", name: "id" },
       { data: "name", name: "name" },
-      { data: "department_id", name: "department_id" },
+      { data: "departmentName", name: "departmentName" },
       { data: "email", name: "email" },
       { data: "phone", name: "phone" },
-      { data: "role_id", name: "role_id" },
-      { data: "status_id", name: "status_id" },
-      { data: "created_at", name: "created_at" },
+      { data: "roleName", name: "roleName" },
+      {
+       data: "status_id",
+       name: "status_id",
+       render: function(data, type, row) {
+        if (data == 1) {
+            return '<span class="badge bg-success">Aktif</span>';
+        } else if (data == 2) {
+            return '<span class="badge bg-danger">Pasif</span>'; 
+        }
+        return '';
+        }
+      },
+      {
+       data: "created_at",
+       name: "created_at",
+       render: function(data, type, row) {
+        return moment(data).format('DD/MM/YYYY HH:mm');
+       }
+      },
       { data: "action", name: "action", render: function(data, type, row) {
         return `<a href="users/edit/${row.id}" class="btn btn-sm btn-primary">İncele</a>`;
         }

@@ -20,7 +20,11 @@ class UserController extends Controller
     // Kullanıcılar Fetch
     public function fetch(Request $request)
     {
-        $user = User::all();
+       $user = User::join('departments', 'departments.id', '=', 'users.department_id')
+       ->join('roles','roles.id','users.role_id')
+       ->select('users.*', 'departments.name as departmentName','roles.name as roleName')
+       ->get();
+
 
         return DataTables()
             ->of($user)
